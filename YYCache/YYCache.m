@@ -79,13 +79,16 @@
 
 - (void)objectForKey:(NSString *)key withBlock:(void (^)(NSString *key, id<NSCoding> object))block {
     if (!block) return;
+    // 1 获取缓存，先检查内存缓存。
     id<NSCoding> object = [_memoryCache objectForKey:key];
     if (object) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             block(key, object);
         });
-    } else {
+    }// 2 内存中没有缓存，从硬盘中获取。
+    else {
         [_diskCache objectForKey:key withBlock:^(NSString *key, id<NSCoding> object) {
+            // 2.1 将硬盘缓存 加到 内存缓存中。
             if (object && ![_memoryCache objectForKey:key]) {
                 [_memoryCache setObject:object forKey:key];
             }
@@ -95,6 +98,7 @@
 }
 
 - (void)setObject:(id<NSCoding>)object forKey:(NSString *)key {
+    //  设置缓存 同时设置 内存和硬盘缓存。
     [_memoryCache setObject:object forKey:key];
     [_diskCache setObject:object forKey:key];
 }

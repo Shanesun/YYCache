@@ -1,0 +1,2441 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>YYDiskCache Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Benchmark </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Shanesun</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/ageLimit">ageLimit</option>
+		
+		<option value="//api/name/autoTrimInterval">autoTrimInterval</option>
+		
+		<option value="//api/name/costLimit">costLimit</option>
+		
+		<option value="//api/name/countLimit">countLimit</option>
+		
+		<option value="//api/name/customArchiveBlock">customArchiveBlock</option>
+		
+		<option value="//api/name/customFileNameBlock">customFileNameBlock</option>
+		
+		<option value="//api/name/customUnarchiveBlock">customUnarchiveBlock</option>
+		
+		<option value="//api/name/errorLogsEnabled">errorLogsEnabled</option>
+		
+		<option value="//api/name/freeDiskSpaceLimit">freeDiskSpaceLimit</option>
+		
+		<option value="//api/name/inlineThreshold">inlineThreshold</option>
+		
+		<option value="//api/name/name">name</option>
+		
+		<option value="//api/name/path">path</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Class Methods">
+		
+		<option value="//api/name/getExtendedDataFromObject:">+ getExtendedDataFromObject:</option>
+		
+		<option value="//api/name/setExtendedData:toObject:">+ setExtendedData:toObject:</option>
+		
+	</optgroup>
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/containsObjectForKey:">- containsObjectForKey:</option>
+		
+		<option value="//api/name/containsObjectForKey:withBlock:">- containsObjectForKey:withBlock:</option>
+		
+		<option value="//api/name/initWithPath:">- initWithPath:</option>
+		
+		<option value="//api/name/initWithPath:inlineThreshold:">- initWithPath:inlineThreshold:</option>
+		
+		<option value="//api/name/objectForKey:">- objectForKey:</option>
+		
+		<option value="//api/name/objectForKey:withBlock:">- objectForKey:withBlock:</option>
+		
+		<option value="//api/name/removeAllObjects">- removeAllObjects</option>
+		
+		<option value="//api/name/removeAllObjectsWithBlock:">- removeAllObjectsWithBlock:</option>
+		
+		<option value="//api/name/removeAllObjectsWithProgressBlock:endBlock:">- removeAllObjectsWithProgressBlock:endBlock:</option>
+		
+		<option value="//api/name/removeObjectForKey:">- removeObjectForKey:</option>
+		
+		<option value="//api/name/removeObjectForKey:withBlock:">- removeObjectForKey:withBlock:</option>
+		
+		<option value="//api/name/setObject:forKey:">- setObject:forKey:</option>
+		
+		<option value="//api/name/setObject:forKey:withBlock:">- setObject:forKey:withBlock:</option>
+		
+		<option value="//api/name/totalCost">- totalCost</option>
+		
+		<option value="//api/name/totalCostWithBlock:">- totalCostWithBlock:</option>
+		
+		<option value="//api/name/totalCount">- totalCount</option>
+		
+		<option value="//api/name/totalCountWithBlock:">- totalCountWithBlock:</option>
+		
+		<option value="//api/name/trimToAge:">- trimToAge:</option>
+		
+		<option value="//api/name/trimToAge:withBlock:">- trimToAge:withBlock:</option>
+		
+		<option value="//api/name/trimToCost:">- trimToCost:</option>
+		
+		<option value="//api/name/trimToCost:withBlock:">- trimToCost:withBlock:</option>
+		
+		<option value="//api/name/trimToCount:">- trimToCount:</option>
+		
+		<option value="//api/name/trimToCount:withBlock:">- trimToCount:withBlock:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">YYDiskCache Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>YYDiskCache.h<br />YYDiskCache.m</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>YYDiskCache is a thread-safe cache that stores key-value pairs backed by SQLite
+and file system (similar to NSURLCache&rsquo;s disk cache).</p>
+
+<p>YYDiskCache has these features:</p>
+
+<ul>
+<li>It use LRU (least-recently-used) to remove objects.</li>
+<li>It can be controlled by cost, count, and age.</li>
+<li>It can be configured to automatically evict objects when there&rsquo;s no free disk space.</li>
+<li>It can automatically decide the storage type (sqlite/file) for each object to get
+    better performance.</li>
+</ul>
+
+
+<p>You may compile the latest version of sqlite and ignore the libsqlite3.dylib in
+iOS system to get 2x~4x speed up.</p>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="Attribute" name="task_Attribute"></a>
+						<h2 class="task-title">Attribute</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/name" title="name"></a>
+	<h3 class="method-title"><code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The name of the cache. Default is nil.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nullable, copy) NSString *name</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The name of the cache. Default is nil.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/path" title="path"></a>
+	<h3 class="method-title"><code><a href="#//api/name/path">&nbsp;&nbsp;path</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The path of the cache (read-only).</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readonly) NSString *path</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The path of the cache (read-only).</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/inlineThreshold" title="inlineThreshold"></a>
+	<h3 class="method-title"><code><a href="#//api/name/inlineThreshold">&nbsp;&nbsp;inlineThreshold</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>If the object&rsquo;s data size (in bytes) is larger than this value, then object will
+be stored as a file, otherwise the object will be stored in sqlite.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (readonly) NSUInteger inlineThreshold</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If the object&rsquo;s data size (in bytes) is larger than this value, then object will
+be stored as a file, otherwise the object will be stored in sqlite.</p>
+
+<p>0 means all objects will be stored as separated files, NSUIntegerMax means all
+objects will be stored in sqlite.</p>
+
+<p>The default value is 20480 (20KB).</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/customArchiveBlock" title="customArchiveBlock"></a>
+	<h3 class="method-title"><code><a href="#//api/name/customArchiveBlock">&nbsp;&nbsp;customArchiveBlock</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>If this block is not nil, then the block will be used to archive object instead
+of NSKeyedArchiver. You can use this block to support the objects which do not
+conform to the <code>NSCoding</code> protocol.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nullable, copy) NSData *^ ) ( id object ) customArchiveBlock</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If this block is not nil, then the block will be used to archive object instead
+of NSKeyedArchiver. You can use this block to support the objects which do not
+conform to the <code>NSCoding</code> protocol.</p>
+
+<p>The default value is nil.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/customUnarchiveBlock" title="customUnarchiveBlock"></a>
+	<h3 class="method-title"><code><a href="#//api/name/customUnarchiveBlock">&nbsp;&nbsp;customUnarchiveBlock</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>If this block is not nil, then the block will be used to unarchive object instead
+of NSKeyedUnarchiver. You can use this block to support the objects which do not
+conform to the <code>NSCoding</code> protocol.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nullable, copy) id ( ^ ) ( NSData *data ) customUnarchiveBlock</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>If this block is not nil, then the block will be used to unarchive object instead
+of NSKeyedUnarchiver. You can use this block to support the objects which do not
+conform to the <code>NSCoding</code> protocol.</p>
+
+<p>The default value is nil.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/customFileNameBlock" title="customFileNameBlock"></a>
+	<h3 class="method-title"><code><a href="#//api/name/customFileNameBlock">&nbsp;&nbsp;customFileNameBlock</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>When an object needs to be saved as a file, this block will be invoked to generate
+a file <a href="#//api/name/name">name</a> for a specified key. If the block is nil, the cache use md5(key) as
+default file <a href="#//api/name/name">name</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nullable, copy) NSString *^ ) ( NSString *key ) customFileNameBlock</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>When an object needs to be saved as a file, this block will be invoked to generate
+a file <a href="#//api/name/name">name</a> for a specified key. If the block is nil, the cache use md5(key) as
+default file <a href="#//api/name/name">name</a>.</p>
+
+<p>The default value is nil.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Limit" name="task_Limit"></a>
+						<h2 class="task-title">Limit</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/countLimit" title="countLimit"></a>
+	<h3 class="method-title"><code><a href="#//api/name/countLimit">&nbsp;&nbsp;countLimit</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The maximum number of objects the cache should hold.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSUInteger countLimit</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The maximum number of objects the cache should hold.</p><p>The default value is NSUIntegerMax, which means no limit.
+This is not a strict limit — if the cache goes over the limit, some objects in the
+cache could be evicted later in background queue.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/costLimit" title="costLimit"></a>
+	<h3 class="method-title"><code><a href="#//api/name/costLimit">&nbsp;&nbsp;costLimit</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The maximum total cost that the cache can hold before it starts evicting objects.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSUInteger costLimit</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The maximum total cost that the cache can hold before it starts evicting objects.</p><p>The default value is NSUIntegerMax, which means no limit.
+This is not a strict limit — if the cache goes over the limit, some objects in the
+cache could be evicted later in background queue.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/ageLimit" title="ageLimit"></a>
+	<h3 class="method-title"><code><a href="#//api/name/ageLimit">&nbsp;&nbsp;ageLimit</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The maximum expiry time of objects in cache.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSTimeInterval ageLimit</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The maximum expiry time of objects in cache.</p><p>The default value is DBL_MAX, which means no limit.
+This is not a strict limit — if an object goes over the limit, the objects could
+be evicted later in background queue.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/freeDiskSpaceLimit" title="freeDiskSpaceLimit"></a>
+	<h3 class="method-title"><code><a href="#//api/name/freeDiskSpaceLimit">&nbsp;&nbsp;freeDiskSpaceLimit</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The minimum free disk space (in bytes) which the cache should kept.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSUInteger freeDiskSpaceLimit</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The minimum free disk space (in bytes) which the cache should kept.</p><p>The default value is 0, which means no limit.
+If the free disk space is lower than this value, the cache will remove objects
+to free some disk space. This is not a strict limit—if the free disk space goes
+over the limit, the objects could be evicted later in background queue.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/autoTrimInterval" title="autoTrimInterval"></a>
+	<h3 class="method-title"><code><a href="#//api/name/autoTrimInterval">&nbsp;&nbsp;autoTrimInterval</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The auto trim check time interval in seconds. Default is 60 (1 minute).</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property NSTimeInterval autoTrimInterval</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The auto trim check time interval in seconds. Default is 60 (1 minute).</p><p>The cache holds an internal timer to check whether the cache reaches
+its limits, and if the limit is reached, it begins to evict objects.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/errorLogsEnabled" title="errorLogsEnabled"></a>
+	<h3 class="method-title"><code><a href="#//api/name/errorLogsEnabled">&nbsp;&nbsp;errorLogsEnabled</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set <code>YES</code> to enable error logs for debug.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property BOOL errorLogsEnabled</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Set <code>YES</code> to enable error logs for debug.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Initializer" name="task_Initializer"></a>
+						<h2 class="task-title">Initializer</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/initWithPath:" title="initWithPath:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithPath:">&ndash;&nbsp;initWithPath:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Create a new cache based on the specified <a href="#//api/name/path">path</a>.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nullable instancetype)initWithPath:(NSString *)<em>path</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>path</code></th>
+						<td><p>Full <a href="#//api/name/path">path</a> of a directory in which the cache will write data.
+     Once initialized you should not read and write to this directory.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A new cache object, or nil if an error occurs.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Create a new cache based on the specified <a href="#//api/name/path">path</a>.</p><div class="warning"><p><strong>Warning:</strong> If the cache instance for the specified <a href="#//api/name/path">path</a> already exists in memory,
+     this method will return it directly, instead of creating a new instance.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/initWithPath:inlineThreshold:" title="initWithPath:inlineThreshold:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithPath:inlineThreshold:">&ndash;&nbsp;initWithPath:inlineThreshold:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The designated initializer.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nullable instancetype)initWithPath:(NSString *)<em>path</em> inlineThreshold:(NSUInteger)<em>threshold</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>path</code></th>
+						<td><p>Full <a href="#//api/name/path">path</a> of a directory in which the cache will write data.
+     Once initialized you should not read and write to this directory.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>threshold</code></th>
+						<td><p>The data store inline threshold in bytes. If the object&rsquo;s data
+     size (in bytes) is larger than this value, then object will be stored as a
+     file, otherwise the object will be stored in sqlite. 0 means all objects will
+     be stored as separated files, NSUIntegerMax means all objects will be stored
+     in sqlite. If you don&rsquo;t know your object&rsquo;s size, 20480 is a good choice.
+     After first initialized you should not change this value of the specified <a href="#//api/name/path">path</a>.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A new cache object, or nil if an error occurs.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The designated initializer.</p><div class="warning"><p><strong>Warning:</strong> If the cache instance for the specified <a href="#//api/name/path">path</a> already exists in memory,
+     this method will return it directly, instead of creating a new instance.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Access Methods" name="task_Access Methods"></a>
+						<h2 class="task-title">Access Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/containsObjectForKey:" title="containsObjectForKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/containsObjectForKey:">&ndash;&nbsp;containsObjectForKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns a boolean value that indicates whether a given key is in cache.
+This method may blocks the calling thread until file read finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)containsObjectForKey:(NSString *)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>A string identifying the value. If nil, just return NO.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Whether the key is in cache.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns a boolean value that indicates whether a given key is in cache.
+This method may blocks the calling thread until file read finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/containsObjectForKey:withBlock:" title="containsObjectForKey:withBlock:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/containsObjectForKey:withBlock:">&ndash;&nbsp;containsObjectForKey:withBlock:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns a boolean value with the block that indicates whether a given key is in cache.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)containsObjectForKey:(NSString *)<em>key</em> withBlock:(void ( ^ ) ( NSString *key , BOOL contains ))<em>block</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>A string identifying the value. If nil, just return NO.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>block</code></th>
+						<td><p>A block which will be invoked in background queue when finished.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns a boolean value with the block that indicates whether a given key is in cache.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/objectForKey:" title="objectForKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/objectForKey:">&ndash;&nbsp;objectForKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the value associated with a given key.
+This method may blocks the calling thread until file read finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nullable id&lt;NSCoding&gt;)objectForKey:(NSString *)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>A string identifying the value. If nil, just return nil.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The value associated with key, or nil if no value is associated with key.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns the value associated with a given key.
+This method may blocks the calling thread until file read finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/objectForKey:withBlock:" title="objectForKey:withBlock:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/objectForKey:withBlock:">&ndash;&nbsp;objectForKey:withBlock:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the value associated with a given key.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)objectForKey:(NSString *)<em>key</em> withBlock:(void ( ^ ) ( NSString *key , id&lt;NSCoding&gt; _Nullable object ))<em>block</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>A string identifying the value. If nil, just return nil.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>block</code></th>
+						<td><p>A block which will be invoked in background queue when finished.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns the value associated with a given key.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setObject:forKey:" title="setObject:forKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setObject:forKey:">&ndash;&nbsp;setObject:forKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sets the value of the specified key in the cache.
+This method may blocks the calling thread until file write finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setObject:(nullable id&lt;NSCoding&gt;)<em>object</em> forKey:(NSString *)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>object</code></th>
+						<td><p>The object to be stored in the cache. If nil, it calls <a href="#//api/name/removeObjectForKey:"><code>removeObjectForKey:</code></a>.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>The key with which to associate the value. If nil, this method has no effect.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Sets the value of the specified key in the cache.
+This method may blocks the calling thread until file write finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setObject:forKey:withBlock:" title="setObject:forKey:withBlock:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setObject:forKey:withBlock:">&ndash;&nbsp;setObject:forKey:withBlock:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Sets the value of the specified key in the cache.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)setObject:(nullable id&lt;NSCoding&gt;)<em>object</em> forKey:(NSString *)<em>key</em> withBlock:(void ( ^ ) ( void ))<em>block</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>object</code></th>
+						<td><p>The object to be stored in the cache. If nil, it calls <a href="#//api/name/removeObjectForKey:"><code>removeObjectForKey:</code></a>.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>block</code></th>
+						<td><p>A block which will be invoked in background queue when finished.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Sets the value of the specified key in the cache.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeObjectForKey:" title="removeObjectForKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeObjectForKey:">&ndash;&nbsp;removeObjectForKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Removes the value of the specified key in the cache.
+This method may blocks the calling thread until file delete finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeObjectForKey:(NSString *)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>The key identifying the value to be removed. If nil, this method has no effect.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Removes the value of the specified key in the cache.
+This method may blocks the calling thread until file delete finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeObjectForKey:withBlock:" title="removeObjectForKey:withBlock:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeObjectForKey:withBlock:">&ndash;&nbsp;removeObjectForKey:withBlock:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Removes the value of the specified key in the cache.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeObjectForKey:(NSString *)<em>key</em> withBlock:(void ( ^ ) ( NSString *key ))<em>block</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>The key identifying the value to be removed. If nil, this method has no effect.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>block</code></th>
+						<td><p>A block which will be invoked in background queue when finished.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Removes the value of the specified key in the cache.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeAllObjects" title="removeAllObjects"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeAllObjects">&ndash;&nbsp;removeAllObjects</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Empties the cache.
+This method may blocks the calling thread until file delete finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeAllObjects</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Empties the cache.
+This method may blocks the calling thread until file delete finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeAllObjectsWithBlock:" title="removeAllObjectsWithBlock:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeAllObjectsWithBlock:">&ndash;&nbsp;removeAllObjectsWithBlock:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Empties the cache.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeAllObjectsWithBlock:(void ( ^ ) ( void ))<em>block</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>block</code></th>
+						<td><p>A block which will be invoked in background queue when finished.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Empties the cache.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeAllObjectsWithProgressBlock:endBlock:" title="removeAllObjectsWithProgressBlock:endBlock:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeAllObjectsWithProgressBlock:endBlock:">&ndash;&nbsp;removeAllObjectsWithProgressBlock:endBlock:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Empties the cache with block.
+This method returns immediately and executes the clear operation with block in background.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeAllObjectsWithProgressBlock:(nullable void ( ^ ) ( int removedCount , int totalCount ))<em>progress</em> endBlock:(nullable void ( ^ ) ( BOOL error ))<em>end</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>progress</code></th>
+						<td><p>This block will be invoked during removing, pass nil to ignore.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>end</code></th>
+						<td><p>This block will be invoked at the end, pass nil to ignore.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Empties the cache with block.
+This method returns immediately and executes the clear operation with block in background.</p><div class="warning"><p><strong>Warning:</strong> You should not send message to this instance in these blocks.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/totalCount" title="totalCount"></a>
+	<h3 class="method-title"><code><a href="#//api/name/totalCount">&ndash;&nbsp;totalCount</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the number of objects in this cache.
+This method may blocks the calling thread until file read finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSInteger)totalCount</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The total objects count.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns the number of objects in this cache.
+This method may blocks the calling thread until file read finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/totalCountWithBlock:" title="totalCountWithBlock:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/totalCountWithBlock:">&ndash;&nbsp;totalCountWithBlock:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get the number of objects in this cache.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)totalCountWithBlock:(void ( ^ ) ( NSInteger totalCount ))<em>block</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>block</code></th>
+						<td><p>A block which will be invoked in background queue when finished.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get the number of objects in this cache.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/totalCost" title="totalCost"></a>
+	<h3 class="method-title"><code><a href="#//api/name/totalCost">&ndash;&nbsp;totalCost</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Returns the total cost (in bytes) of objects in this cache.
+This method may blocks the calling thread until file read finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (NSInteger)totalCost</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The total objects cost in bytes.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Returns the total cost (in bytes) of objects in this cache.
+This method may blocks the calling thread until file read finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/totalCostWithBlock:" title="totalCostWithBlock:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/totalCostWithBlock:">&ndash;&nbsp;totalCostWithBlock:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get the total cost (in bytes) of objects in this cache.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)totalCostWithBlock:(void ( ^ ) ( NSInteger totalCost ))<em>block</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>block</code></th>
+						<td><p>A block which will be invoked in background queue when finished.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get the total cost (in bytes) of objects in this cache.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Trim" name="task_Trim"></a>
+						<h2 class="task-title">Trim</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/trimToCount:" title="trimToCount:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/trimToCount:">&ndash;&nbsp;trimToCount:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Removes objects from the cache use LRU, until the <a href="#//api/name/totalCount"><code>totalCount</code></a> is below the specified value.
+This method may blocks the calling thread until operation finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)trimToCount:(NSUInteger)<em>count</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>count</code></th>
+						<td><p>The total count allowed to remain after the cache has been trimmed.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Removes objects from the cache use LRU, until the <a href="#//api/name/totalCount"><code>totalCount</code></a> is below the specified value.
+This method may blocks the calling thread until operation finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/trimToCount:withBlock:" title="trimToCount:withBlock:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/trimToCount:withBlock:">&ndash;&nbsp;trimToCount:withBlock:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Removes objects from the cache use LRU, until the <a href="#//api/name/totalCount"><code>totalCount</code></a> is below the specified value.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)trimToCount:(NSUInteger)<em>count</em> withBlock:(void ( ^ ) ( void ))<em>block</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>count</code></th>
+						<td><p>The total count allowed to remain after the cache has been trimmed.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>block</code></th>
+						<td><p>A block which will be invoked in background queue when finished.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Removes objects from the cache use LRU, until the <a href="#//api/name/totalCount"><code>totalCount</code></a> is below the specified value.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/trimToCost:" title="trimToCost:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/trimToCost:">&ndash;&nbsp;trimToCost:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Removes objects from the cache use LRU, until the <a href="#//api/name/totalCost"><code>totalCost</code></a> is below the specified value.
+This method may blocks the calling thread until operation finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)trimToCost:(NSUInteger)<em>cost</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>cost</code></th>
+						<td><p>The total cost allowed to remain after the cache has been trimmed.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Removes objects from the cache use LRU, until the <a href="#//api/name/totalCost"><code>totalCost</code></a> is below the specified value.
+This method may blocks the calling thread until operation finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/trimToCost:withBlock:" title="trimToCost:withBlock:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/trimToCost:withBlock:">&ndash;&nbsp;trimToCost:withBlock:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Removes objects from the cache use LRU, until the <a href="#//api/name/totalCost"><code>totalCost</code></a> is below the specified value.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)trimToCost:(NSUInteger)<em>cost</em> withBlock:(void ( ^ ) ( void ))<em>block</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>cost</code></th>
+						<td><p>The total cost allowed to remain after the cache has been trimmed.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>block</code></th>
+						<td><p>A block which will be invoked in background queue when finished.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Removes objects from the cache use LRU, until the <a href="#//api/name/totalCost"><code>totalCost</code></a> is below the specified value.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/trimToAge:" title="trimToAge:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/trimToAge:">&ndash;&nbsp;trimToAge:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Removes objects from the cache use LRU, until all expiry objects removed by the specified value.
+This method may blocks the calling thread until operation finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)trimToAge:(NSTimeInterval)<em>age</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>age</code></th>
+						<td><p>The maximum age of the object.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Removes objects from the cache use LRU, until all expiry objects removed by the specified value.
+This method may blocks the calling thread until operation finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/trimToAge:withBlock:" title="trimToAge:withBlock:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/trimToAge:withBlock:">&ndash;&nbsp;trimToAge:withBlock:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Removes objects from the cache use LRU, until all expiry objects removed by the specified value.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)trimToAge:(NSTimeInterval)<em>age</em> withBlock:(void ( ^ ) ( void ))<em>block</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>age</code></th>
+						<td><p>The maximum age of the object.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>block</code></th>
+						<td><p>A block which will be invoked in background queue when finished.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Removes objects from the cache use LRU, until all expiry objects removed by the specified value.
+This method returns immediately and invoke the passed block in background queue
+when the operation finished.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Extended Data" name="task_Extended Data"></a>
+						<h2 class="task-title">Extended Data</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/getExtendedDataFromObject:" title="getExtendedDataFromObject:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getExtendedDataFromObject:">+&nbsp;getExtendedDataFromObject:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get extended data from an object.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (nullable NSData *)getExtendedDataFromObject:(id)<em>object</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>object</code></th>
+						<td><p>An object.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>The extended data.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get extended data from an object.</p><p>See &lsquo;setExtendedData:toObject:&rsquo; for more information.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setExtendedData:toObject:" title="setExtendedData:toObject:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setExtendedData:toObject:">+&nbsp;setExtendedData:toObject:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set extended data to an object.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setExtendedData:(nullable NSData *)<em>extendedData</em> toObject:(id)<em>object</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>extendedData</code></th>
+						<td><p>The extended data (pass nil to remove).</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>object</code></th>
+						<td><p>The object.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Set extended data to an object.</p><p>You can set any extended data to an object before you save the object
+to disk cache. The extended data will also be saved with this object. You can get
+the extended data later with &ldquo;getExtendedDataFromObject:&rdquo;.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYDiskCache.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Shanesun. All rights reserved. Updated: 2016-09-14</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>

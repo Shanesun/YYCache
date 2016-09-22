@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>YYKVStorage Class Reference</title>
+
+	<link rel="stylesheet" href="../css/style.css">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1.4">
+	<meta name="generator" content="appledoc 2.2.1 (build 1334)">
+</head>
+<body class="appledoc">
+	<header>
+		<div class="container" class="hide-in-xcode">
+			
+			<h1 id="library-title">
+				<a href="../index.html">Benchmark </a>
+			</h1>
+
+			<p id="developer-home">
+				<a href="../index.html">Shanesun</a>
+			</p>
+			
+		</div>
+	</header>
+
+	<aside>
+		<div class="container">
+			<nav>
+				<ul id="header-buttons" role="toolbar">
+					<li><a href="../index.html">Index</a></li>
+<li><a href="../hierarchy.html">Hierarchy</a></li>
+
+					<li id="on-this-page" role="navigation">
+						<label>
+							On This Page
+
+							<div class="chevron">
+								<div class="chevy chevron-left"></div>
+								<div class="chevy chevron-right"></div>
+							</div>
+
+							<select id="jump-to">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+
+	
+	
+	<optgroup label="Properties">
+		
+		<option value="//api/name/errorLogsEnabled">errorLogsEnabled</option>
+		
+		<option value="//api/name/path">path</option>
+		
+		<option value="//api/name/type">type</option>
+		
+	</optgroup>
+	
+
+	
+
+	
+	<optgroup label="Instance Methods">
+		
+		<option value="//api/name/_reset">- _reset</option>
+		
+		<option value="//api/name/getItemForKey:">- getItemForKey:</option>
+		
+		<option value="//api/name/getItemForKeys:">- getItemForKeys:</option>
+		
+		<option value="//api/name/getItemInfoForKey:">- getItemInfoForKey:</option>
+		
+		<option value="//api/name/getItemInfoForKeys:">- getItemInfoForKeys:</option>
+		
+		<option value="//api/name/getItemValueForKey:">- getItemValueForKey:</option>
+		
+		<option value="//api/name/getItemValueForKeys:">- getItemValueForKeys:</option>
+		
+		<option value="//api/name/getItemsCount">- getItemsCount</option>
+		
+		<option value="//api/name/getItemsSize">- getItemsSize</option>
+		
+		<option value="//api/name/initWithPath:type:">- initWithPath:type:</option>
+		
+		<option value="//api/name/itemExistsForKey:">- itemExistsForKey:</option>
+		
+		<option value="//api/name/removeAllItems">- removeAllItems</option>
+		
+		<option value="//api/name/removeAllItemsWithProgressBlock:endBlock:">- removeAllItemsWithProgressBlock:endBlock:</option>
+		
+		<option value="//api/name/removeItemForKey:">- removeItemForKey:</option>
+		
+		<option value="//api/name/removeItemForKeys:">- removeItemForKeys:</option>
+		
+		<option value="//api/name/removeItemsEarlierThanTime:">- removeItemsEarlierThanTime:</option>
+		
+		<option value="//api/name/removeItemsLargerThanSize:">- removeItemsLargerThanSize:</option>
+		
+		<option value="//api/name/removeItemsToFitCount:">- removeItemsToFitCount:</option>
+		
+		<option value="//api/name/removeItemsToFitSize:">- removeItemsToFitSize:</option>
+		
+		<option value="//api/name/saveItem:">- saveItem:</option>
+		
+		<option value="//api/name/saveItemWithKey:value:">- saveItemWithKey:value:</option>
+		
+		<option value="//api/name/saveItemWithKey:value:filename:extendedData:">- saveItemWithKey:value:filename:extendedData:</option>
+		
+	</optgroup>
+	
+	
+</select>
+						</label>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</aside>
+
+	<article>
+		<div id="overview_contents" class="container">
+			<div id="content">
+				<main role="main">
+					<h1 class="title">YYKVStorage Class Reference</h1>
+
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<th>Inherits from</th>
+	<td>NSObject</td>
+</tr><tr>
+	<th>Declared in</th>
+	<td>YYKVStorage.h<br />YYKVStorage.m</td>
+</tr>
+						</tbody></table></div>
+					
+
+                    
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>YYKVStorage is a key-value storage based on sqlite and file system.
+Typically, you should not use this class directly.</p><p>The designated initializer for YYKVStorage is <a href="#//api/name/initWithPath:type:"><code>initWithPath:type:</code></a>.
+After initialized, a directory is created based on the <a href="#//api/name/path"><code>path</code></a> to hold key-value data.
+Once initialized you should not read or write this directory without the instance.</p>
+
+<p>You may compile the latest version of sqlite and ignore the libsqlite3.dylib in
+iOS system to get 2x~4x speed up.</p><div class="warning"><p><strong>Warning:</strong> The instance of this class is <em>NOT</em> thread safe, you need to make sure
+that there&rsquo;s only one thread to access the instance at the same time. If you really
+need to process large amounts of data in multi-thread, you should split the data
+to multiple KVStorage instance (sharding).</p></div>
+					</div>
+					
+					
+
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						
+
+						<a title="Attribute" name="task_Attribute"></a>
+						<h2 class="task-title">Attribute</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/path" title="path"></a>
+	<h3 class="method-title"><code><a href="#//api/name/path">&nbsp;&nbsp;path</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The path of this storage.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) NSString *path</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The path of this storage.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/type" title="type"></a>
+	<h3 class="method-title"><code><a href="#//api/name/type">&nbsp;&nbsp;type</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The type of this storage.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic, readonly) YYKVStorageType type</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The type of this storage.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/errorLogsEnabled" title="errorLogsEnabled"></a>
+	<h3 class="method-title"><code><a href="#//api/name/errorLogsEnabled">&nbsp;&nbsp;errorLogsEnabled</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set <code>YES</code> to enable error logs for debug.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>@property (nonatomic) BOOL errorLogsEnabled</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Set <code>YES</code> to enable error logs for debug.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Initializer" name="task_Initializer"></a>
+						<h2 class="task-title">Initializer</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/initWithPath:type:" title="initWithPath:type:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/initWithPath:type:">&ndash;&nbsp;initWithPath:type:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>The designated initializer.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nullable instancetype)initWithPath:(NSString *)<em>path</em> type:(YYKVStorageType)<em>type</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>path</code></th>
+						<td><p>Full <a href="#//api/name/path">path</a> of a directory in which the storage will write data. If
+    the directory is not exists, it will try to create one, otherwise it will
+    read the data in this directory.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>type</code></th>
+						<td><p>The storage <a href="#//api/name/type">type</a>. After first initialized you should not change the
+    <a href="#//api/name/type">type</a> of the specified <a href="#//api/name/path">path</a>.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A new storage object, or nil if an error occurs.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>The designated initializer.</p><div class="warning"><p><strong>Warning:</strong> Multiple instances with the same <a href="#//api/name/path">path</a> will make the storage unstable.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Save Items" name="task_Save Items"></a>
+						<h2 class="task-title">Save Items</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/saveItem:" title="saveItem:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/saveItem:">&ndash;&nbsp;saveItem:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Save an item or update the item with &lsquo;key&rsquo; if it already exists.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)saveItem:(YYKVStorageItem *)<em>item</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>item</code></th>
+						<td><p>An item.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Whether succeed.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Save an item or update the item with &lsquo;key&rsquo; if it already exists.</p><p>This method will save the item.key, item.value, item.filename and
+item.extendedData to disk or sqlite, other properties will be ignored. item.key
+and item.value should not be empty (nil or zero length).</p>
+
+<p>If the <a href="#//api/name/type"><code>type</code></a> is YYKVStorageTypeFile, then the item.filename should not be empty.
+If the <a href="#//api/name/type"><code>type</code></a> is YYKVStorageTypeSQLite, then the item.filename will be ignored.
+It the <a href="#//api/name/type"><code>type</code></a> is YYKVStorageTypeMixed, then the item.value will be saved to file
+system if the item.filename is not empty, otherwise it will be saved to sqlite.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/saveItemWithKey:value:" title="saveItemWithKey:value:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/saveItemWithKey:value:">&ndash;&nbsp;saveItemWithKey:value:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Save an item or update the item with &lsquo;key&rsquo; if it already exists.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)saveItemWithKey:(NSString *)<em>key</em> value:(NSData *)<em>value</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>The key, should not be empty (nil or zero length).</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>value</code></th>
+						<td><p>The key, should not be empty (nil or zero length).</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Whether succeed.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Save an item or update the item with &lsquo;key&rsquo; if it already exists.</p><p>This method will save the key-value pair to sqlite. If the <a href="#//api/name/type"><code>type</code></a> is
+YYKVStorageTypeFile, then this method will failed.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/saveItemWithKey:value:filename:extendedData:" title="saveItemWithKey:value:filename:extendedData:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/saveItemWithKey:value:filename:extendedData:">&ndash;&nbsp;saveItemWithKey:value:filename:extendedData:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Save an item or update the item with &lsquo;key&rsquo; if it already exists.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)saveItemWithKey:(NSString *)<em>key</em> value:(NSData *)<em>value</em> filename:(nullable NSString *)<em>filename</em> extendedData:(nullable NSData *)<em>extendedData</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>The key, should not be empty (nil or zero length).</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>value</code></th>
+						<td><p>The key, should not be empty (nil or zero length).</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>filename</code></th>
+						<td><p>The filename.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>extendedData</code></th>
+						<td><p>The extended data for this item (pass nil to ignore it).</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Whether succeed.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Save an item or update the item with &lsquo;key&rsquo; if it already exists.</p>
+
+<p>@discussion
+If the <a href="#//api/name/type"><code>type</code></a> is YYKVStorageTypeFile, then the <code>filename</code> should not be empty.
+If the <a href="#//api/name/type"><code>type</code></a> is YYKVStorageTypeSQLite, then the <code>filename</code> will be ignored.
+It the <a href="#//api/name/type"><code>type</code></a> is YYKVStorageTypeMixed, then the <code>value</code> will be saved to file
+system if the <code>filename</code> is not empty, otherwise it will be saved to sqlite.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Remove Items" name="task_Remove Items"></a>
+						<h2 class="task-title">Remove Items</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/removeItemForKey:" title="removeItemForKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeItemForKey:">&ndash;&nbsp;removeItemForKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove an item with &lsquo;key&rsquo;.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)removeItemForKey:(NSString *)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>The item&rsquo;s key.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Whether succeed.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove an item with &lsquo;key&rsquo;.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeItemForKeys:" title="removeItemForKeys:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeItemForKeys:">&ndash;&nbsp;removeItemForKeys:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove items with an array of keys.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)removeItemForKeys:(NSArray&lt;NSString*&gt; *)<em>keys</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>keys</code></th>
+						<td><p>An array of specified keys.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Whether succeed.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove items with an array of keys.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeItemsLargerThanSize:" title="removeItemsLargerThanSize:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeItemsLargerThanSize:">&ndash;&nbsp;removeItemsLargerThanSize:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove all items which <code>value</code> is larger than a specified size.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)removeItemsLargerThanSize:(int)<em>size</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>size</code></th>
+						<td><p>The maximum size in bytes.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Whether succeed.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove all items which <code>value</code> is larger than a specified size.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeItemsEarlierThanTime:" title="removeItemsEarlierThanTime:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeItemsEarlierThanTime:">&ndash;&nbsp;removeItemsEarlierThanTime:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove all items which last access time is earlier than a specified timestamp.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)removeItemsEarlierThanTime:(int)<em>time</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>time</code></th>
+						<td><p>The specified unix timestamp.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Whether succeed.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove all items which last access time is earlier than a specified timestamp.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeItemsToFitSize:" title="removeItemsToFitSize:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeItemsToFitSize:">&ndash;&nbsp;removeItemsToFitSize:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove items to make the total size not larger than a specified size.
+The least recently used (LRU) items will be removed first.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)removeItemsToFitSize:(int)<em>maxSize</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>maxSize</code></th>
+						<td><p>The specified size in bytes.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Whether succeed.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove items to make the total size not larger than a specified size.
+The least recently used (LRU) items will be removed first.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeItemsToFitCount:" title="removeItemsToFitCount:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeItemsToFitCount:">&ndash;&nbsp;removeItemsToFitCount:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove items to make the total count not larger than a specified count.
+The least recently used (LRU) items will be removed first.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)removeItemsToFitCount:(int)<em>maxCount</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>maxCount</code></th>
+						<td><p>The specified item count.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Whether succeed.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove items to make the total count not larger than a specified count.
+The least recently used (LRU) items will be removed first.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeAllItems" title="removeAllItems"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeAllItems">&ndash;&nbsp;removeAllItems</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove all items in background queue.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)removeAllItems</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Whether succeed.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove all items in background queue.</p><p>This method will remove the files and sqlite database to a trash
+folder, and then clear the folder in background queue. So this method is much
+faster than <a href="#//api/name/removeAllItemsWithProgressBlock:endBlock:"><code>removeAllItemsWithProgressBlock:endBlock:</code></a>.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/removeAllItemsWithProgressBlock:endBlock:" title="removeAllItemsWithProgressBlock:endBlock:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/removeAllItemsWithProgressBlock:endBlock:">&ndash;&nbsp;removeAllItemsWithProgressBlock:endBlock:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Remove all items.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)removeAllItemsWithProgressBlock:(nullable void ( ^ ) ( int removedCount , int totalCount ))<em>progress</em> endBlock:(nullable void ( ^ ) ( BOOL error ))<em>end</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>progress</code></th>
+						<td><p>This block will be invoked during removing, pass nil to ignore.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>end</code></th>
+						<td><p>This block will be invoked at the end, pass nil to ignore.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Remove all items.</p><div class="warning"><p><strong>Warning:</strong> You should not send message to this instance in these blocks.</p></div>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Get Items" name="task_Get Items"></a>
+						<h2 class="task-title">Get Items</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/getItemForKey:" title="getItemForKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getItemForKey:">&ndash;&nbsp;getItemForKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get item with a specified key.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nullable YYKVStorageItem *)getItemForKey:(NSString *)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>A specified key.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Item for the key, or nil if not exists / error occurs.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get item with a specified key.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getItemInfoForKey:" title="getItemInfoForKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getItemInfoForKey:">&ndash;&nbsp;getItemInfoForKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get item information with a specified key.
+The <code>value</code> in this item will be ignored.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nullable YYKVStorageItem *)getItemInfoForKey:(NSString *)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>A specified key.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Item information for the key, or nil if not exists / error occurs.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get item information with a specified key.
+The <code>value</code> in this item will be ignored.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getItemValueForKey:" title="getItemValueForKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getItemValueForKey:">&ndash;&nbsp;getItemValueForKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get item value with a specified key.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nullable NSData *)getItemValueForKey:(NSString *)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>A specified key.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Item&rsquo;s value, or nil if not exists / error occurs.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get item value with a specified key.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getItemForKeys:" title="getItemForKeys:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getItemForKeys:">&ndash;&nbsp;getItemForKeys:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get items with an array of keys.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nullable NSArray&lt;YYKVStorageItem*&gt; *)getItemForKeys:(NSArray&lt;NSString*&gt; *)<em>keys</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>keys</code></th>
+						<td><p>An array of specified keys.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An array of <a href="../Classes/YYKVStorageItem.html"><code>YYKVStorageItem</code></a>, or nil if not exists / error occurs.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get items with an array of keys.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getItemInfoForKeys:" title="getItemInfoForKeys:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getItemInfoForKeys:">&ndash;&nbsp;getItemInfoForKeys:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get item infomartions with an array of keys.
+The <code>value</code> in items will be ignored.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nullable NSArray&lt;YYKVStorageItem*&gt; *)getItemInfoForKeys:(NSArray&lt;NSString*&gt; *)<em>keys</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>keys</code></th>
+						<td><p>An array of specified keys.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>An array of <a href="../Classes/YYKVStorageItem.html"><code>YYKVStorageItem</code></a>, or nil if not exists / error occurs.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get item infomartions with an array of keys.
+The <code>value</code> in items will be ignored.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getItemValueForKeys:" title="getItemValueForKeys:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getItemValueForKeys:">&ndash;&nbsp;getItemValueForKeys:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get items value with an array of keys.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (nullable NSDictionary&lt;NSString*,NSData*&gt; *)getItemValueForKeys:(NSArray&lt;NSString*&gt; *)<em>keys</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>keys</code></th>
+						<td><p>An array of specified keys.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>A dictionary which key is &lsquo;key&rsquo; and value is &lsquo;value&rsquo;, or nil if not
+    exists / error occurs.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get items value with an array of keys.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						<a title="Get Storage Status" name="task_Get Storage Status"></a>
+						<h2 class="task-title">Get Storage Status</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/itemExistsForKey:" title="itemExistsForKey:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/itemExistsForKey:">&ndash;&nbsp;itemExistsForKey:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Whether an item exists for a specified key.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (BOOL)itemExistsForKey:(NSString *)<em>key</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>key</code></th>
+						<td><p>A specified key.</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p><code>YES</code> if there&rsquo;s an item exists for the key, <code>NO</code> if not exists or an error occurs.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Whether an item exists for a specified key.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getItemsCount" title="getItemsCount"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getItemsCount">&ndash;&nbsp;getItemsCount</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get total item count.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)getItemsCount</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Total item count, -1 when an error occurs.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get total item count.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/getItemsSize" title="getItemsSize"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getItemsSize">&ndash;&nbsp;getItemsSize</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Get item value&rsquo;s total size in bytes.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (int)getItemsSize</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>Total size in bytes, -1 when an error occurs.</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Get item value&rsquo;s total size in bytes.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+
+						
+						<h2 class="task-title">Other Methods</h2>
+
+						<div class="task-list">
+							<div class="section-method">
+	<a name="//api/name/_reset" title="_reset"></a>
+	<h3 class="method-title"><code><a href="#//api/name/_reset">&ndash;&nbsp;_reset</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Delete all files and empty in background.
+Make sure the db is closed.</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>- (void)_reset</code></div>
+
+		    
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Delete all files and empty in background.
+Make sure the db is closed.</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">YYKVStorage.m</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div>
+						</div>
+						
+					</div>
+					
+					
+
+                    
+                    
+          
+				</main>
+
+				<footer>
+					<div class="footer-copyright">
+						
+						<p class="copyright">Copyright &copy; 2016 Shanesun. All rights reserved. Updated: 2016-09-14</p>
+						
+						
+						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1334)</a>.</p>
+						
+					</div>
+				</footer>
+			</div>
+		</div>
+	</article>
+
+	<script src="../js/script.js"></script>
+</body>
+</html>
